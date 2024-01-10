@@ -1,0 +1,238 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from sbgg.sch.id/en/tell-friend/content/55 by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 23:58:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="keywords" content="Jl. Prof. DR. Soepomo No.11, RT.13/RW.2, Tebet Barat, Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810" />
+<meta http-equiv="Description" content="Jl. Prof. DR. Soepomo No.11, RT.13/RW.2, Tebet Barat, Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810" />
+<meta http-equiv="Author" content="Leoniko Inc." />
+<meta http-equiv="Version" content="1.1.3" />
+<title>Tell A Friend - Arts & Crafts - Sekolah Bina Gita Gemilang</title>
+<script type="text/javascript">
+	var jin_path = '../../../index.html';
+	var jin_lang = 'en';
+</script>
+<link rel="stylesheet" type="text/css" href="../../../theme/default/jin.css" />
+<link rel="stylesheet" type="text/css" href="../../../theme/default/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../theme/default/round-button.css" />
+
+<script type="text/javascript" src="../../../inc/jwd01.js"></script>
+
+<style type="text/css">
+
+#pscroller1{
+width: 200px;
+height: 100px;
+border: 1px solid black;
+padding: 5px;
+background-color: lightyellow;
+}
+
+#pscroller2{
+width: 100%;
+height: 13px;
+border: 0;
+padding: 2px;
+color: #3566CD;
+}
+
+#pscroller2 a{
+text-decoration: none;
+}
+
+.someclass{ //class to apply to your scroller(s) if desired
+	color: #3566CD;
+}
+
+</style>
+
+<script type="text/javascript">
+
+var pausecontent2=new Array()
+
+
+</script>
+
+<script type="text/javascript">
+
+/***********************************************
+* Pausing up-down scroller- © Dynamic Drive (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+***********************************************/
+
+function pausescroller(content, divId, divClass, delay){
+this.content=content //message array content
+this.tickerid=divId //ID of ticker div to display information
+this.delay=delay //Delay between msg change, in miliseconds.
+this.mouseoverBol=0 //Boolean to indicate whether mouse is currently over scroller (and pause it if it is)
+this.hiddendivpointer=1 //index of message array for hidden div
+document.write('<div id="'+divId+'" class="'+divClass+'" style="position: relative; overflow: hidden"><div class="innerDiv" style="position: absolute; width: 100%" id="'+divId+'1">'+content[0]+'</div><div class="innerDiv" style="position: absolute; width: 100%; visibility: hidden" id="'+divId+'2">'+content[1]+'</div></div>')
+var scrollerinstance=this
+if (window.addEventListener) //run onload in DOM2 browsers
+window.addEventListener("load", function(){scrollerinstance.initialize()}, false)
+else if (window.attachEvent) //run onload in IE5.5+
+window.attachEvent("onload", function(){scrollerinstance.initialize()})
+else if (document.getElementById) //if legacy DOM browsers, just start scroller after 0.5 sec
+setTimeout(function(){scrollerinstance.initialize()}, 500)
+}
+
+// -------------------------------------------------------------------
+// initialize()- Initialize scroller method.
+// -Get div objects, set initial positions, start up down animation
+// -------------------------------------------------------------------
+
+pausescroller.prototype.initialize=function(){
+this.tickerdiv=document.getElementById(this.tickerid)
+this.visiblediv=document.getElementById(this.tickerid+"1")
+this.hiddendiv=document.getElementById(this.tickerid+"2")
+this.visibledivtop=parseInt(pausescroller.getCSSpadding(this.tickerdiv))
+//set width of inner DIVs to outer DIV's width minus padding (padding assumed to be top padding x 2)
+this.visiblediv.style.width=this.hiddendiv.style.width=this.tickerdiv.offsetWidth-(this.visibledivtop*2)+"px"
+this.getinline(this.visiblediv, this.hiddendiv)
+this.hiddendiv.style.visibility="visible"
+var scrollerinstance=this
+document.getElementById(this.tickerid).onmouseover=function(){scrollerinstance.mouseoverBol=1}
+document.getElementById(this.tickerid).onmouseout=function(){scrollerinstance.mouseoverBol=0}
+if (window.attachEvent) //Clean up loose references in IE
+window.attachEvent("onunload", function(){scrollerinstance.tickerdiv.onmouseover=scrollerinstance.tickerdiv.onmouseout=null})
+setTimeout(function(){scrollerinstance.animateup()}, this.delay)
+}
+
+
+// -------------------------------------------------------------------
+// animateup()- Move the two inner divs of the scroller up and in sync
+// -------------------------------------------------------------------
+
+pausescroller.prototype.animateup=function(){
+var scrollerinstance=this
+if (parseInt(this.hiddendiv.style.top)>(this.visibledivtop+5)){
+this.visiblediv.style.top=parseInt(this.visiblediv.style.top)-5+"px"
+this.hiddendiv.style.top=parseInt(this.hiddendiv.style.top)-5+"px"
+setTimeout(function(){scrollerinstance.animateup()}, 50)
+}
+else{
+this.getinline(this.hiddendiv, this.visiblediv)
+this.swapdivs()
+setTimeout(function(){scrollerinstance.setmessage()}, this.delay)
+}
+}
+
+// -------------------------------------------------------------------
+// swapdivs()- Swap between which is the visible and which is the hidden div
+// -------------------------------------------------------------------
+
+pausescroller.prototype.swapdivs=function(){
+var tempcontainer=this.visiblediv
+this.visiblediv=this.hiddendiv
+this.hiddendiv=tempcontainer
+}
+
+pausescroller.prototype.getinline=function(div1, div2){
+div1.style.top=this.visibledivtop+"px"
+div2.style.top=Math.max(div1.parentNode.offsetHeight, div1.offsetHeight)+"px"
+}
+
+// -------------------------------------------------------------------
+// setmessage()- Populate the hidden div with the next message before it's visible
+// -------------------------------------------------------------------
+
+pausescroller.prototype.setmessage=function(){
+var scrollerinstance=this
+if (this.mouseoverBol==1) //if mouse is currently over scoller, do nothing (pause it)
+setTimeout(function(){scrollerinstance.setmessage()}, 100)
+else{
+var i=this.hiddendivpointer
+var ceiling=this.content.length
+this.hiddendivpointer=(i+1>ceiling-1)? 0 : i+1
+this.hiddendiv.innerHTML=this.content[this.hiddendivpointer]
+this.animateup()
+}
+}
+
+pausescroller.getCSSpadding=function(tickerobj){ //get CSS padding value, if any
+if (tickerobj.currentStyle)
+return tickerobj.currentStyle["paddingTop"]
+else if (window.getComputedStyle) //if DOM2
+return window.getComputedStyle(tickerobj, "").getPropertyValue("padding-top")
+else
+return 0
+}
+
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="../../../inc/highslide/style.css" />
+<script type="text/javascript" src="../../../inc/highslide/highslide-with-html.js"></script>
+<script type="text/javascript">    
+   hs.graphicsDir = '../../../inc/highslide/graphics/index.html';
+   hs.outlineType = 'rounded-white';
+   hs.outlineWhileAnimating = true;hs.showCredits = false;
+	window.onload = function() {
+      hs.preloadImages();
+   }
+	
+</script>
+<script src="../../../inc/js/gen_validatorv31.js" type="text/javascript"></script>
+	<script  type="text/javascript"><!--
+	ts = 1700610963;
+	--></script>
+	
+ <style>
+  .buttonClose{
+	background-color:#cccccc;
+	border:1px outset #dddddd;
+	color:#0062AA;
+	font-weight:bold;
+	height:27px;
+	vertical-align: bottom;
+	}
+  .buttonClose:hover{
+	background-color:#eeeeee;
+	border:1px dot #dddddd;
+	color:#0062AA;
+	font-weight:bold;
+	}
+ </style>
+<link rel="shortcut icon" href="../../../favicon.ico" />
+</head>
+
+<body bgcolor="#FFFFFF">
+<div style="margin: 5px;">
+	<table border="0" width="100%" id="table2" cellpadding="2">
+		<tr>
+			<td align="right"><button class="buttonClose" onClick="window.self.close()"><img src="../../../theme/default/images/01.png"> 
+		Close</button></td>
+		</tr>
+		<tr>
+			<td><h1><b>Tell A Friend</b></h1> <br> <b>Date:</b> Jakarta, 22 November 2023 - 06:56 WIB <br> <b>Title:</b> Arts & Crafts <br><br><br><br><br><div align="center"><form method="POST" name="myform" style="padding:0; margin:0; ">	<table border=0 cellspacing=1  cellpadding=2 width="98%">		<tr>			<td>								<table border=0 cellspacing=1 cellpadding=2  width="100%">					<tr valign="top">						<td  width=100>							<b>Your Name</b>						</td>						<td >							<input type="text" name="name" size="30" value="">						</td>					</tr>					<tr>						<td  width=100>							<b>Your Email</b>						</td>						<td >							<input type="text" name="email" size="30" value="">						</td>					</tr>					<tr valign="top">						<td  width=250 nowrap="nowrap">							<b>Friends Email (seperate by comma)</b>						</td>						<td >							<textarea name="friend_email" rows="2" cols="40"></textarea>						</td>					</tr>					<tr>						<td  width=100 valign=top>							<b>Your Message</b>						</td>						<td >							<textarea name="message" rows="3" cols="40"></textarea>						</td>					</tr>					<tr>						<td width=100 valign=top>							Code Anti Spam						</td>						<td >							<img id="__code__" src="../../../inc/imgval/code85ff.png?id=1700610963" style="border:1px solid #000000" /><br /><a href="#captcha" onclick="document.getElementById('__code__').src = '../../../inc/imgval/code5445.png?id=' + ++ts; return false">click for new code</a><br />							<input type="text" name="code" /> 							<input type="hidden" name="posted" value="1" />						</td>					</tr>					<tr>						<td  colspan=2>
+										<span class="button">
+											<button type="submit" >
+												<div class="button_txt">Submit</div>
+											</button>
+										</span>
+									</td>					</tr>				</table>			</td>		</tr>	</table></form></div>
+			<script type="text/javascript">
+				var frmvalidator  = new Validator("myform");
+				frmvalidator.EnableMsgsTogether();
+				frmvalidator.addValidation("name","req","Please enter your Name");
+				//frmvalidator.addValidation("name","alpha");
+
+				frmvalidator.addValidation("email","maxlen=100");
+				frmvalidator.addValidation("email","req","Please enter your Email");
+				frmvalidator.addValidation("email","email");
+
+				frmvalidator.addValidation("friend_email","req","Please enter Friend Email");
+
+				frmvalidator.addValidation("message","req","Please enter Message");
+				frmvalidator.addValidation("code","req","Please enter Captcha Code");
+			</script>
+	</td>
+		</tr>
+	</table>
+	</div>
+</body>
+
+<!-- Mirrored from sbgg.sch.id/en/tell-friend/content/55 by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 23:58:59 GMT -->
+</html>

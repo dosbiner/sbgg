@@ -1,0 +1,38 @@
+a, td, input, p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#container {
+    background-color:#fff;
+	width: 100%;
+	color: #000000;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	padding:0px;
+}
+
+.header {
+	text-align: center;
+}
+
+.button_ok {
+	font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	background-color: #FF0000;
+	color: #ffffff;
+	border: 1px solid #FF0000;
+	border-bottom-width: 1px; 
+}
+.button_go {
+	font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	background-color: #12496E;
+	color: #ffffff;
+	border: 1px solid #12496E;
+	border-bottom-width: 1px; 
+}
+.kotak1 {
+	font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	background-color: #ffffff;
+	color: #102132;
+	border: 1px solid #cccccc; 
+}

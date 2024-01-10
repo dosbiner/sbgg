@@ -1,0 +1,1482 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from sbgg.sch.id/jquery.colorbox-min.js by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 23:53:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="keywords" content="Jl. Prof. DR. Soepomo No.11, RT.13/RW.2, Tebet Barat, Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810" />
+<meta http-equiv="Description" content="Jl. Prof. DR. Soepomo No.11, RT.13/RW.2, Tebet Barat, Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810" />
+<meta http-equiv="Author" content="Leoniko Inc." />
+<meta http-equiv="Version" content="1.1.3" />
+<title>Sekolah Bina Gita Gemilang</title>
+<script type="text/javascript">
+	var jin_path = 'index.html';
+	var jin_lang = 'en';
+</script>
+<script language="javascript" type="text/javascript" src="theme/default/js/stmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="theme/default/jin.css" />
+<link rel="stylesheet" type="text/css" href="theme/default/style.css" />
+<link rel="stylesheet" type="text/css" href="theme/default/round-button.css" />
+
+<script type="text/javascript" src="inc/jwd01.js"></script>
+
+<style type="text/css">
+
+#pscroller1{
+width: 200px;
+height: 100px;
+border: 1px solid black;
+padding: 5px;
+background-color: lightyellow;
+}
+
+#pscroller2{
+width: 100%;
+height: 13px;
+border: 0;
+padding: 2px;
+color: #3566CD;
+}
+
+#pscroller2 a{
+text-decoration: none;
+}
+
+.someclass{ //class to apply to your scroller(s) if desired
+	color: #3566CD;
+}
+
+</style>
+
+<script type="text/javascript">
+
+var pausecontent2=new Array()
+
+
+</script>
+
+<script type="text/javascript">
+
+/***********************************************
+* Pausing up-down scroller- © Dynamic Drive (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+***********************************************/
+
+function pausescroller(content, divId, divClass, delay){
+this.content=content //message array content
+this.tickerid=divId //ID of ticker div to display information
+this.delay=delay //Delay between msg change, in miliseconds.
+this.mouseoverBol=0 //Boolean to indicate whether mouse is currently over scroller (and pause it if it is)
+this.hiddendivpointer=1 //index of message array for hidden div
+document.write('<div id="'+divId+'" class="'+divClass+'" style="position: relative; overflow: hidden"><div class="innerDiv" style="position: absolute; width: 100%" id="'+divId+'1">'+content[0]+'</div><div class="innerDiv" style="position: absolute; width: 100%; visibility: hidden" id="'+divId+'2">'+content[1]+'</div></div>')
+var scrollerinstance=this
+if (window.addEventListener) //run onload in DOM2 browsers
+window.addEventListener("load", function(){scrollerinstance.initialize()}, false)
+else if (window.attachEvent) //run onload in IE5.5+
+window.attachEvent("onload", function(){scrollerinstance.initialize()})
+else if (document.getElementById) //if legacy DOM browsers, just start scroller after 0.5 sec
+setTimeout(function(){scrollerinstance.initialize()}, 500)
+}
+
+// -------------------------------------------------------------------
+// initialize()- Initialize scroller method.
+// -Get div objects, set initial positions, start up down animation
+// -------------------------------------------------------------------
+
+pausescroller.prototype.initialize=function(){
+this.tickerdiv=document.getElementById(this.tickerid)
+this.visiblediv=document.getElementById(this.tickerid+"1")
+this.hiddendiv=document.getElementById(this.tickerid+"2")
+this.visibledivtop=parseInt(pausescroller.getCSSpadding(this.tickerdiv))
+//set width of inner DIVs to outer DIV's width minus padding (padding assumed to be top padding x 2)
+this.visiblediv.style.width=this.hiddendiv.style.width=this.tickerdiv.offsetWidth-(this.visibledivtop*2)+"px"
+this.getinline(this.visiblediv, this.hiddendiv)
+this.hiddendiv.style.visibility="visible"
+var scrollerinstance=this
+document.getElementById(this.tickerid).onmouseover=function(){scrollerinstance.mouseoverBol=1}
+document.getElementById(this.tickerid).onmouseout=function(){scrollerinstance.mouseoverBol=0}
+if (window.attachEvent) //Clean up loose references in IE
+window.attachEvent("onunload", function(){scrollerinstance.tickerdiv.onmouseover=scrollerinstance.tickerdiv.onmouseout=null})
+setTimeout(function(){scrollerinstance.animateup()}, this.delay)
+}
+
+
+// -------------------------------------------------------------------
+// animateup()- Move the two inner divs of the scroller up and in sync
+// -------------------------------------------------------------------
+
+pausescroller.prototype.animateup=function(){
+var scrollerinstance=this
+if (parseInt(this.hiddendiv.style.top)>(this.visibledivtop+5)){
+this.visiblediv.style.top=parseInt(this.visiblediv.style.top)-5+"px"
+this.hiddendiv.style.top=parseInt(this.hiddendiv.style.top)-5+"px"
+setTimeout(function(){scrollerinstance.animateup()}, 50)
+}
+else{
+this.getinline(this.hiddendiv, this.visiblediv)
+this.swapdivs()
+setTimeout(function(){scrollerinstance.setmessage()}, this.delay)
+}
+}
+
+// -------------------------------------------------------------------
+// swapdivs()- Swap between which is the visible and which is the hidden div
+// -------------------------------------------------------------------
+
+pausescroller.prototype.swapdivs=function(){
+var tempcontainer=this.visiblediv
+this.visiblediv=this.hiddendiv
+this.hiddendiv=tempcontainer
+}
+
+pausescroller.prototype.getinline=function(div1, div2){
+div1.style.top=this.visibledivtop+"px"
+div2.style.top=Math.max(div1.parentNode.offsetHeight, div1.offsetHeight)+"px"
+}
+
+// -------------------------------------------------------------------
+// setmessage()- Populate the hidden div with the next message before it's visible
+// -------------------------------------------------------------------
+
+pausescroller.prototype.setmessage=function(){
+var scrollerinstance=this
+if (this.mouseoverBol==1) //if mouse is currently over scoller, do nothing (pause it)
+setTimeout(function(){scrollerinstance.setmessage()}, 100)
+else{
+var i=this.hiddendivpointer
+var ceiling=this.content.length
+this.hiddendivpointer=(i+1>ceiling-1)? 0 : i+1
+this.hiddendiv.innerHTML=this.content[this.hiddendivpointer]
+this.animateup()
+}
+}
+
+pausescroller.getCSSpadding=function(tickerobj){ //get CSS padding value, if any
+if (tickerobj.currentStyle)
+return tickerobj.currentStyle["paddingTop"]
+else if (window.getComputedStyle) //if DOM2
+return window.getComputedStyle(tickerobj, "").getPropertyValue("padding-top")
+else
+return 0
+}
+
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="inc/highslide/style.css" />
+<script type="text/javascript" src="inc/highslide/highslide-with-html.js"></script>
+<script type="text/javascript">    
+   hs.graphicsDir = 'inc/highslide/graphics/index.html';
+   hs.outlineType = 'rounded-white';
+   hs.outlineWhileAnimating = true;hs.showCredits = false;
+	window.onload = function() {
+      hs.preloadImages();
+   }
+	
+</script>
+
+<link rel="shortcut icon" href="favicon.ico" />
+
+<link media="screen" rel="stylesheet" href="colorbox.html" />
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="jquery.colorbox-min.html" type="text/javascript"></script>
+<script type="text/javascript">
+$(function()
+{
+    $(window).bind('load', 
+        function(e) 
+        {
+            $.colorbox({opacity:0.3, href:"offer.html"}); 
+        });
+});
+</script>
+</head>
+<script language="javascript">
+
+/*
+Auto center window script- Eric King (http://redrival.com/eak/index.shtml)
+Permission granted to Dynamic Drive to feature script in archive
+For full source, usage terms, and 100's more DHTML scripts, visit http://dynamicdrive.com
+*/
+
+var win = null;
+function New_Window(mypage,myname,w,h,scroll,resize,tool,menu,status,url){
+LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
+TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
+settings =
+'height='+h+',width='+w+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',resizable='+resize+',toolbar='+tool+',menubar='+menu+',status='+status+',location='+url
+win = window.open(mypage,myname,settings)
+}
+
+</script>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+
+<style type="text/css">
+	/* style untuk link popup */
+	a.popup-link {
+		padding:17px 0;
+		text-align: center;
+		margin:10% auto;
+		position: relative;
+		width: 430px;
+		color: #fff;
+		text-decoration: none;
+		/*background-color: #FFBA00;*/
+		border-radius: 3px;
+		box-shadow: 0 5px 0px 0px #eea900;
+		display: block;
+	}
+	a.popup-link:hover {
+		background-color: #ff9900;
+		box-shadow: 0 3px 0px 0px #eea900;
+		-webkit-transition:all 1s;
+		transition:all 1s;
+	}
+	/* end link popup*/
+	/* animasi popup */
+
+	@-webkit-keyframes autopopup {
+		from {opacity: 0;margin-top:-200px;}
+		to {opacity: 1;}
+	}
+	@-moz-keyframes autopopup {
+		from {opacity: 0;margin-top:-200px;}
+		to {opacity: 1;}
+	}
+	@keyframes autopopup {
+		from {opacity: 0;margin-top:-200px;}
+		to {opacity: 1;}
+	}
+	/* end animasi popup */
+	/*style untuk popup */	
+	#popup {
+		background-color: rgba(0,0,0,0.8);
+		position: fixed;
+		top:-50;
+		left:0;
+		right:0;
+		bottom:0;
+		margin:0;
+		z-index:9999;
+		-webkit-animation:autopopup 2s;
+		-moz-animation:autopopup 2s;
+		animation:autopopup 2s;
+	}
+	#popup:target {
+		-webkit-transition:all 1s;
+		-moz-transition:all 1s;
+		transition:all 1s;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	@media (min-width: 400px){
+		.popup-container {
+			width:430px;
+		}
+	}
+	@media (max-width: 387px){
+		.popup-container {
+			width:100%;
+		}
+	}
+	.popup-container {
+		position: relative;
+		margin:7% auto;
+		padding:5px 5px;
+		background-color: #fafafa;
+		color:#333;
+		border-radius: 3px;
+	}
+
+	a.popup-close {
+		position: absolute;
+		top:3px;
+		right:3px;
+		background-color: #333;
+		padding:5px 5px;
+		font-size: 10px;
+		text-decoration: none;
+		line-height: 1;
+		color:#fff;
+	}
+	/* end style popup */
+
+	/* style untuk isi popup */
+	.popup-form {
+		margin:10px auto;
+	}
+		.popup-form h2 {
+			margin-bottom: 5px;
+			font-size: 37px;
+			text-transform: uppercase;
+		}
+		.popup-form .input-group {
+			margin:10px auto;
+		}
+			.popup-form .input-group input {
+				padding:17px;
+				text-align: center;
+				margin-bottom: 10px;
+				border-radius:3px;
+				font-size: 16px; 
+				display: block;
+				width: 100%;
+			}
+			.popup-form .input-group input:focus {
+				outline-color:#FB8833; 
+			}
+			.popup-form .input-group input[type="email"] {
+				border:0px;
+				position: relative;
+			}
+			.popup-form .input-group input[type="submit"] {
+				background-color: #FB8833;
+				color: #fff;
+				border: 0;
+				cursor: pointer;
+			}
+			.popup-form .input-group input[type="submit"]:focus {
+				box-shadow: inset 0 3px 7px 3px #ea7722;
+			}
+	/* end style isi popup */
+
+	</style>
+
+
+ <div class="popup-wrapper" id="popup">
+	<div class="popup-container">
+<center><img src="http://m.sbgg.sch.id/pop_up/sbgg/img/open_day_sbgg.jpg" width="430" height="600">       
+
+		
+		<a class="popup-close" href="#popup">X</a>
+	</div>
+ </div>
+
+
+
+<div align="center">
+	<table border="0" width="950" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+			<table border="0" width="100%">
+				<tr>
+					<td width="26">
+			<img src="theme/default/images/logo_sbgg.png"></td>
+					<td>
+					<p align="right">
+			<img src="theme/default/images/go_green.png"></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="0" width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td style="border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px">
+			<table border="0" width="100%" style="border-width:0px; ">
+				<tr>
+					<td style="border-style:none; border-width:medium; " width="647">
+					
+
+				<script type="text/javascript">
+				// pmi-> 83886139
+stm_bm(["menu0b4a","850","","",0,"","",0,2,250,0,1000,1,0,0,"","100%",67109119,0,1,2,"default","hand",""],this);
+//stm_bp("p0",[1,4,0,0,2,3,0,7,50,"",-2,"",-2,50,0,0,"#999999","#E6EFF9","",3,1,1,"#000000"]);
+stm_bp("p0",[0,4,0,0,0,10,0,7,100,"",-2,"",-2,100,0,0,"","","",3,0,0,"transparent"]);
+stm_ai("p0i0",[0,"Home","","",-1,-1,0,"en/index.html","_self","","","","",,,0,"","",0,0,0,1,1,"",0,"#336699",0,"","",3,3,1,1,"transparent","#ffffff","#000000","#ffffff","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+		stm_aix("p0i2","p0i0",[0,"About Us","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p79","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p79i0","p0i0",[0,"Origin","","",-1,-1,0,"en/content/45/origin.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"Vision, Mission & Motto","","",-1,-1,0,"en/content/44/vision--mission---motto.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"School Values","","",-1,-1,0,"en/content/46/school-values.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"School Achievements","","",-1,-1,0,"en/content/48/school-achievements.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"School Facilities","","",-1,-1,0,"en/content/49/school-facilities.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+					stm_aix("p0i3","p0i0",[0,"Curriculum","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p89","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p89i0","p0i0",[0,"English Language","","",-1,-1,0,"en/content/50/english-language.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Mathematics","","",-1,-1,0,"en/content/51/mathematics.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Second Language","","",-1,-1,0,"","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"theme/default/menujin/arrow_r.gif","theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p92","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p92i0","p0i0",[0,"Bahasa Indonesia","","",-1,-1,0,"en/content/52/bahasa-indonesia.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p92i0","p0i0",[0,"Chinese Language","","",-1,-1,0,"en/content/53/chinese-language.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				stm_aix("p89i0","p0i0",[0,"Science","","",-1,-1,0,"en/content/54/science.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Aesthetics","","",-1,-1,0,"","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"theme/default/menujin/arrow_r.gif","theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p96","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p96i0","p0i0",[0,"Arts & Crafts","","",-1,-1,0,"en/content/55/arts---crafts.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p96i0","p0i0",[0,"Music","","",-1,-1,0,"en/content/56/music.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				stm_aix("p89i0","p0i0",[0,"Moral Education","","",-1,-1,0,"","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"theme/default/menujin/arrow_r.gif","theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p99","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p99i0","p0i0",[0,"Christian","","",-1,-1,0,"en/content/57/christian.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p99i0","p0i0",[0,"Muslim","","",-1,-1,0,"en/content/58/muslim.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				stm_aix("p89i0","p0i0",[0,"Character Education","","",-1,-1,0,"en/content/85/character-education.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Other Studies","","",-1,-1,0,"","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"theme/default/menujin/arrow_r.gif","theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p102","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p102i0","p0i0",[0,"Indonesian Studies","","",-1,-1,0,"en/content/59/indonesian-studies.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p102i0","p0i0",[0,"Physical Education","","",-1,-1,0,"en/content/61/physical-education.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p102i0","p0i0",[0,"Information Technology (IT)","","",-1,-1,0,"en/content/62/information-technology--it-.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				
+				stm_ep();
+					stm_aix("p0i4","p0i0",[0,"Programme","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p106","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p106i0","p0i0",[0,"Learning Support Programme","","",-1,-1,0,"en/content/63/learning-support-programme.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p106i0","p0i0",[0,"Elective Programme","","",-1,-1,0,"en/content/64/elective-programme.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p106i0","p0i0",[0,"Co-Curricular Activities (CCA)","","",-1,-1,0,"en/content/65/co-curricular-activities--cca-.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+					stm_aix("p0i5","p0i0",[0,"PSC","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p109","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p109i0","p0i0",[0,"Rationale","","",-1,-1,0,"en/content/66/rationale.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p109i0","p0i0",[0,"News","","",-1,-1,0,"en/content/67/news.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p109i0","p0i0",[0,"Members","","",-1,-1,0,"en/content/68/members.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+					stm_aix("p0i6","p0i0",[0,"Photo Gallery","","",-1,-1,0,"en/gallery.html","_self","","","","",,,0,"","",,,0,1],0,0);
+							stm_aix("p0i7","p0i0",[0,"Alumni News & Achievements","","",-1,-1,0,"en/content/88/alumni-news---achievements.html","_self","","","","",,,0,"","",,,0,1],0,0);
+							stm_aix("p0i8","p0i0",[0,"Contact Us","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p86","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p86i0","p0i0",[0,"Our Address","","",-1,-1,0,"en/content/47/our-address.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p86i0","p0i0",[0,"Enrollment","","",-1,-1,0,"en/content/84/enrollment.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p86i0","p0i0",[0,"Employment","","",-1,-1,0,"en/content/86/employment.html","_self","","","theme/default/menujin/blank.gif","theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+			
+stm_ep();
+stm_sc(1,["transparent","transparent","","",3,3,0,0,"#FFFFF7","#000000","theme/default/menujin/up_disabled.gif","theme/default/menujin/up_enabled.gif",7,9,0,"theme/default/menujin/down_disabled.gif","theme/default/menujin/down_enabled.gif",7,9,0,0,200]);
+stm_em();
+</script>
+</td>
+					<td style="border-style:none; border-width:medium; " bgcolor="#800000">
+					<p align="center">
+					<b><font size="1" color="#FFFFFF">Jakarta, 22 November 2023 - 06:51 
+					WIB </font></b></td>
+				</tr>
+			</table>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<img src="theme/default/images/gr.png" width="950" height="10" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+			<iframe src="http://m.sbgg.sch.id/" width="100%" height="350" frameborder="0" scrolling="no" marginwidth="1" marginheight="5" name="valuta" align="center">
+			</iframe>	
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#800000">
+			<table border="0" width="100%" cellpadding="8">
+				<tr>
+					<td><font color="#FFFFFF" size="4"><b>
+					<marquee scrollamount="5" scrolldelay="30">CREATIVITY - HUMILITY - INTEGRITY - RESOURCEFULNESS - PERSEVERANCE - SENSITIVITY
+					</marquee></b></font></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="0" width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td valign="top">
+			<table border="0" width="625" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="297">
+							<table border="0" width="297" cellspacing="0" cellpadding="0" height="44">
+								<tr>
+									<td background="theme/default/images/kotak_03.png">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<b>
+													<font size="4">Welcome</font></b></td>
+								</tr>
+							</table>
+									</td>
+								</tr>
+							</table>
+							</td>
+							<td background="theme/default/images/kotak_003.png">&nbsp;</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td background="theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8" height="280">
+											<tr>
+												<td valign="top"><span><span style="font-size: 12pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap"><strong>Warm greetings and welcome to the 2023/2024 school year!</strong></span></span><br />
+<br />
+<div align="justify">
+<span><span style="font-size: 12pt; font-family: Arial, sans-serif; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap">
+</span><span style="font-family: Arial, sans-serif; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap"><font size="2">On behalf of Sekolah Bina Gita Gemilang, I am delighted to welcome you to </font></span></span>
+</div>
+<div align="justify">
+<span><span style="font-family: Arial, sans-serif; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap"><font size="2">Sekolah Bina Gita Gemilang! </font></span></span>
+</div>
+<div align="justify">
+<font face="arial, helvetica, sans-serif" size="2"><br />
+<div align="justify">
+<div align="justify">
+We are excited to welcome all of our students, especially those who are new to our school. As we start this school year, we are looking forward to a productive partnership with you to ensure that each of our children are able to bring out their best potential. We are committed to nurture our students as&nbsp; lifelong learners who possess creative and critical minds and uphold moral values. Our school motto &lsquo;From Each His Best&rsquo; has inspired the whole school community to work hand in hand in order to provide guidance for our students to achieve the best version of themselves.&nbsp;&nbsp;
+</div>
+<div>
+<br />
+</div>
+</div>
+In SBGG, we complement our academic curriculum with our various Electives and Co-Curricular Activities. These help our students to be well-rounded and well-grounded individuals. Inquiry-based learning, updated teaching methodology and project based activities are also highlighted to ensure that they acquire the essential skills as 21st century citizens: critical thinkers, problem solvers, team players, effective leaders who uphold moral values and socially responsible citizens who understand their role as a part of the community.</font>
+</div>
+<div align="justify">
+<font face="arial, helvetica, sans-serif" size="2"><br />
+<div align="justify">
+We recognize that to be successful in school, our students require the support from both from home and school. We strongly believe that a strong partnership between school and&nbsp; parents will make a significant difference in our students&rsquo; education journey. As partners, we share the responsibilities for our children&rsquo;s success and we also assure that we will do our very best to carry out our responsibilities. Together we are confident that SBGG will continue to grow in spirit and we are excited about being part of the educational journey of every SBGG student.&nbsp;
+</div>
+<div>
+<br />
+</div>
+Our school utilizes the website, Instagram and Facebook as the communication channels connecting parents and school. Feel free to follow our social media so that you are able to receive school updates and various photos of our school events. We look forward to working closely with our students and parents, and to creating another productive and meaningful school year at SBGG. Please do not hesitate to contact us should you have any enquiries.</font>
+</div>
+<div align="justify">
+<font face="arial, helvetica, sans-serif" size="2"><br />
+</font>
+</div>
+<div align="justify">
+<font face="arial, helvetica, sans-serif" size="2">Sincerely,<br />
+</font>
+<br />
+</div>
+<br />
+<strong><u>Meiling Yona A. U. Ginting</u></strong>
+<div>
+<strong>Principal</strong><br />
+<br />
+<br />
+</div></td>
+											</tr>
+										</table>
+										</td>
+				</tr>
+				<tr>
+					<td>
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="theme/default/images/kotak_008.png">&nbsp;</td>
+							<td width="297">
+							<p align="right">
+							<img border="0" src="theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+							<table border="0" width="100%" height="150">
+								<tr>
+									<td>
+									<div align="center">
+									<table border="0" width="31%" cellpadding="20">
+										<tr>
+											<td width="63">
+											<table border="0" width="182">
+												<tr>
+													<td>
+													<p align="right"><b><font size="5">VISIT US</font></b></td>
+												</tr>
+											</table>
+											</td>
+											<td width="74">
+											<a target="_blank" href="https://www.facebook.com/FromEachHisBest">
+											<img border="0" src="theme/default/images/logo_fb.png" width="74" height="73"></a></td>
+											<td>
+											<a target="_blank" href="https://www.instagram.com/sekolahbinagitagemilang/">
+											<img border="0" src="theme/default/images/logo_ig.png" width="74" height="73"></a></td>
+										</tr>
+									</table>
+									</div>
+									</td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+			</table>
+					</td>
+					<td width="297" align="right" valign="top">
+					<table border="0" width="13%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="theme/default/images/kotak_03.png" height="44">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<b>
+													<font size="4">Announcement</font></b></td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<td background="theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8" height="600">
+											<tr>
+												<td valign="top">
+								<marquee  scrolldelay="150" onmouseover="this.stop();" onmouseout="this.start();" direction="up" height="580" width="274"><div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><font size="2"><strong>Updated Academic Calendar 2023-2024</strong></font>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1"><strong><br />
+</strong></font>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="2"><strong>Term 1</strong></font>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1"><strong><br />
+</strong></font>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="2" color="#ff0000"><strong>19 July 2023</strong></font>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="text-align: start; white-space: pre-wrap"><font color="#ff0000"><strong>Islamic New Year - Public Holiday</strong></font></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">20 July 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>First day of New Acad Year - Class Rules / Routine Orientation</strong></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap">
+</span></font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="text-align: start; white-space: pre-wrap"><strong>Dismissal: P1-2: 11.00am ; P3-4: 11.30am ; P5-6: 12.00pm</strong></span>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font color="#0000ff"><font size="1"><span style="line-height: 10.7px"><br />
+</span></font></font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><span style="text-align: start; white-space: pre-wrap"><font size="2" color="#0000ff"><strong>24 Jul-4 Aug 2023</strong></font></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>P1&amp;P6 Buddy Programme</strong></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">26 July 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>P1 &amp; P2 'Reading in My Comfy Attire' day (tbc)</strong></span>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">27 July 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><strong><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap">SCH-PSC-GLC bonding day (tbc)</span><font size="1" color="#0000ff">&nbsp;</font></strong>
+</font>
+</div>
+</div>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">31 Jul - 1 Sep 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>P1-2 Reading Campaign :Bonding through Reading</strong></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">8 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>Welcome New Family/ Curriculum Briefing Pri. 1 (0n-site)</strong></span>
+</font>
+</div>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">9 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>Pri. 2 Curriculum Briefing and Math Workshop (Virtual)</strong></span>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="1">&nbsp;</font><font size="2" color="#0000ff">10 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>Curriculum Briefing and Math Workshop for P3&amp;4 (virtual)</strong></span>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">7-18 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>National Heritage Weeks: The Diversity of Indonesian Culture</strong></span>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">10 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>Curriculum Briefing and Math Workshop for P3&amp;4 (virtual)</strong></span>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">15 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>Curriculum Briefing P5 and Math Workshop for P5 (virtual)</strong></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#ff0000"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">16 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>National Day Flag Raising and 17an Competition (1/2 day school)</strong></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#ff0000">17 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="text-align: start; white-space: pre-wrap"><font color="#ff0000">Independence Day - Public Holiday</font></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">22 August 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>Curriculum Briefing P6 (Virtual)</strong></span>
+</font>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">1 September 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><strong><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap">Teachers' Appreciation Day </span><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"> </span></strong>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><br />
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><font size="2" color="#0000ff"><strong>7 September 2023</strong></font>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>Pri. 1-4 Educational Trip (tentative)</strong></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#ff0000"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">21 September 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap"><strong>P5&amp;P6 Virtual Parent-Teacher Conference (PTC)</strong></span>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">22 September 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><strong><font size="1" color="#0000ff">&nbsp;</font><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap">P1-4 Virtual Parent-Teacher Conference (PTC)</span></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#0000ff">22-23 September 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><strong><font size="1" color="#0000ff">&nbsp;</font><span style="color: #1f1f1f; text-align: start; white-space: pre-wrap">P5&amp;6 Excursion to Bogor</span></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#ff0000">25-29 September 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font color="#ff0000"><font size="1">&nbsp;</font><span style="text-align: start; white-space: pre-wrap">Term 1 Academic Break (students)</span></font>
+</font>
+</div>
+</div>
+<div>
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div>
+<div align="center">
+<font face="terminal, monaco"><strong><font size="2" color="#ff0000">28 September 2023</font></strong>
+</font>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff">&nbsp;</font><span style="text-align: start; white-space: pre-wrap"><font color="#ff0000">Maulid Nabi - Public Holiday</font></span>
+</font>
+</div>
+</div>
+<div align="center">
+<font face="terminal, monaco"><font size="1" color="#0000ff"><br />
+</font>
+</font>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<br />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<div align="center">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 12.84px; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div>
+<span style="line-height: 12.84px; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div>
+<span style="line-height: 12.84px; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 107%; font-family: Arial, 'sans-serif'">
+<div align="center" style="font-family: Verdana, Arial, Helvetica, sans-serif">
+<span style="line-height: 12.84px; font-family: Arial, 'sans-serif'">
+<div>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div align="center">
+</div></marquee></td>
+											</tr>
+										</table>
+										</td>
+						</tr>
+						<tr>
+							<td>
+							<img border="0" src="theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="297" valign="top">
+					<table border="0" width="13%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="theme/default/images/kotak_03.png" height="44">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<font size="4"><b>Member Area</b></font></td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<td background="theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8" height="50">
+											<tr>
+												<td valign="top">
+								<p align="center">
+								[
+								<a href="javascript:New_Window('http://member.sbgg.sch.id/','','850','500','yes','no','no','no','no');">
+								LOGIN</a> ]<p align="center">
+								<i><font size="2">If you do not have a password,
+								<br>
+								please contact admin</font></i></td>
+											</tr>
+										</table>
+										</td>
+						</tr>
+						<tr>
+							<td>
+							<img border="0" src="theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+					</table>
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+					<table border="0" width="13%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="theme/default/images/kotak_03.png" height="44">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<font size="4"><b>Student&#39;s Work</b></font></td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<td background="theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8" height="50">
+											<tr>
+												<td valign="top">
+								<div align="center">
+									<a href="en/content/87.html">
+									<img border="0" src="theme/default/img/s_work.png"></a></div>
+												</td>
+											</tr>
+										</table>
+										</td>
+						</tr>
+						<tr>
+							<td>
+							<img border="0" src="theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+					</table>
+							</td>
+						</tr>
+					</table>
+					</td>
+					<td align="center" valign="top">
+					<table border="0" width="13%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="theme/default/images/kotak_03.png" height="44">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<b>
+													<font size="4">Latest News</font></b></td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<td background="theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8" height="350">
+											<tr>
+												<td valign="top"><div class="news"><div class="news_date"><i>February 20, 2023 | 10:36 WIB</i></div>
+										<a href="en/news-detail/82/math-and-science-week-2023.html"><font size=2><b>Math and Science Week 2023</b></font></a>
+										<br />
+										Math and Science Week was an exciting event at SBGG which provided the opportunities for the students to experience various engaging and educational activities. Our students connected Math skills with real life problems through the Math interactive board which allows students to explore about place values, statistics and measurement. There were also various fun activities related to shapes. To add excitement to the week, our Science team conducted some meaningful activities such as games, competition and experiments. The above activities will be conducted during school hours. The students had a blast during the Math and Science Week.
+										<br />
+						
+					<br /><br /><div class="news_date"><i>February 20, 2023 | 10:31 WIB</i></div>
+										<a href="en/news-detail/81/student-led-conference.html"><font size=2><b>Student LED Conference</b></font></a>
+										<br />
+										This was an activity where students presented their portfolio in front of their parents. The students built the bonding with their parents by informing parents about the lessons have learned throughout 1 semester. It was the occasion where student can voice out about their learning process, their favorite subject or topic, their constraints and also enjoyment while learning the topics. They also had the opportunities to explore various activity stations during the conference.
+										<br />
+						
+					<br /><br />
+					<table border=0 width=100%>
+					<tr>
+						<td width=16>
+						<img border=0 src=theme/default/images/view.png width=16 height=16></td>
+					<td><a href="en/news.html">view all news</a></td>
+					</tr>
+					</table></div></td>
+											</tr>
+										</table>
+										</td>
+						</tr>
+						<tr>
+							<td>
+							<img border="0" src="theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+					</table>
+					</td>
+					<td align="right" width="297" valign="top">
+					<table border="0" width="13%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="theme/default/images/kotak_03.png" height="44">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<b><font size="4">Photo Gallery</font></b></td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<td background="theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8" height="350">
+											<tr>
+												<td valign="top">
+								
+																<marquee  scrolldelay="150" onmouseover="this.stop();" onmouseout="this.start();" direction="up" height="350" width="274"><div align=center><table border=0 cellspacing=0 cellpadding=0 width=100%> <tr>    <td align="center" valign=top height=150 background="theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb960" href="img/960.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="img/t/960.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb976" href="img/976.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="img/t/976.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb994" href="img/994.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="img/t/994.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb935" href="img/935.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="img/t/935.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb979" href="img/979.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="img/t/979.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb964" href="img/964.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="img/t/964.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr>
+	</table>
+	</div>
+	 </marquee></td>
+
+								
+											</tr>
+										</table>
+										</td>
+						</tr>
+						<tr>
+							<td>
+							<img border="0" src="theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="0" width="100%" cellpadding="10" style="border-width: 0px">
+				<tr>
+					<td style="border-style:none; border-width:medium; ">
+					<p align="center">&copy; Copyright 2009-2023 | Sekolah Bina Gita Gemilang - All Rights Reserved. <br />
+Jl. Prof. Dr. Soepomo No. 11 Tebet - Jakarta Selatan 12810 | Phone: (+62 21) 8378 7523 Fax: (+62 21) 8370 4412<br />
+<a href="https://www.facebook.com/FromEachHisBest/" target="_blank">Facebook Sekolah bina Gita gemilang</a><br /></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		</table>
+</div>
+<script type="text/javascript">
+<!--
+var ref=""+escape(top.document.referrer);
+var colord = window.screen.colorDepth;
+var res = window.screen.width + "x" + window.screen.height;
+document.write("<img src='http://sbgg.sch.id/inc/hit/countme.php?referer=" + ref + "&amp;screen=" + res + "&amp;color="+colord+"' alt='' width=1 height=1 />");
+-->
+</script>
+<noscript><div><img src="inc/hit/countme.gif" alt="" width=1 height=1/></div></noscript>
+</body>
+
+<!-- Mirrored from sbgg.sch.id/jquery.colorbox-min.js by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 23:53:47 GMT -->
+</html>

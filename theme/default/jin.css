@@ -1,0 +1,298 @@
+* { 
+
+}
+
+body {
+	background:#c0deed url(images/bg-clouds.png) repeat-x center top;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	/* line-height: 18px; */
+	margin: 0; 
+	padding: 0;
+}
+
+td, div {
+	font-family: Verdana; 
+	font-size: 11px;
+	/* line-height: 15px; */
+}
+
+a:active, a:link, a:visited {
+	text-decoration: none; 
+	color:#0000FF;
+	border-bottom: 1px none;
+}
+a:hover {
+  	text-decoration: none;
+	border-bottom: 1px dashed;
+	color:#000000;
+}
+
+img {
+	behavior:url(iepngfix.htc);
+	border:none;
+}
+
+object, embed {
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	margin: 0 0;
+	padding: 3px 0;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+h2 {
+	margin: 0 0;
+	padding: 3px 0;
+	font-size: 16px;
+	font-weight: normal;
+}
+input ,textarea{
+	/* border: 1px solid #ddd; */
+}
+
+.button_s {
+  font-family      : Verdana;
+  font-style       : normal;
+  font-size        : 11px;
+  color            : #000000;
+  background       : #99CCFF;
+  border           : 1px ridge #006699;
+  padding-top      : 2px;
+  padding-bottom   : 2px;
+  cursor		   : hand;
+}
+
+.warning {
+	color:#E5342B;
+	background-color:#FCF2FA;
+	border: 1px solid #E5342B;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 2px;
+	text-align: center;
+}
+.good {
+	color:#528925;
+	background-color:#CAE6B3;
+	border: 1px solid #528925;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px;
+	text-align: center;
+}
+.std {
+	color:#254394;
+	background-color:#E6F0FF;
+	border: 1px solid #254394;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px;
+	text-align: center;
+}
+
+
+.warning {
+	color:#E5342B;
+	background-color:#FCF2FA;
+	border: 1px solid #E5342B;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 2px;
+	text-align: center;
+}
+.good {
+	color:#528925;
+	background-color:#CAE6B3;
+	border: 1px solid #528925;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px;
+	text-align: center;
+}
+.std {
+	color:#254394;
+	background-color:#E6F0FF;
+	border: 1px solid #254394;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px;
+	text-align: center;
+}
+
+.form_field {
+	background-color: #D3E2F7;
+}
+.form_field2 {
+	background-color: #FFCCFF;
+}
+
+
+.news {
+	padding:2px;
+}
+.news a {
+	color: #6666cc;
+}
+.news_date {
+	font-size: 10px;
+}
+
+.link_tag {
+	color: #FF7F00;
+}
+
+/* PAGINATION */
+div.pagination {
+	padding: 3px 0 3px 0;
+	margin: 0;
+}
+
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #AAAADD;
+	
+	text-decoration: none; /* no underline */
+	color: #000099;
+}
+div.pagination a:hover, div.pagination a:active {
+	border: 1px solid #000099;
+
+	color: #000;
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+		border: 1px solid #000099;
+		
+		font-weight: bold;
+		background-color: #000099;
+		color: #FFF;
+	}
+	div.pagination span.disabled {
+		padding: 2px 5px 2px 5px;
+		margin: 2px;
+		border: 1px solid #EEE;
+	
+		color: #DDD;
+	}
+/* PAGINATION */
+.fieldset {
+	border: 1px solid #cccccc;
+	padding: 5px;
+}
+
+ul.prod_folder{
+	padding-left: 10px;
+	margin:0;
+	list-style-image: url(images/folder.html);
+}
+ul.prod{
+	padding-left: 10px;
+	margin:0;
+	list-style-image: url(images/article_text.html);
+}
+li.prod, li.prod_folder {
+	padding: 0;
+	margin:0;
+	line-height: 140%;
+	/* list-style-type:none; */
+}
+
+.jin_crud_table {
+	width: 100%;
+	/* border: 1px solid #c2e1ef; */
+	margin: 0px;
+	padding: 0px;
+}
+.jin_crud_th {
+	background-color:#dff4ff;
+	border-bottom: 1px solid #c2e1ef;
+	border-right: 1px solid #ccc;
+	text-align: left;
+	padding-left: 2px;
+	font-size: 11px;
+}
+.jin_crud_td {
+	border-bottom: 1px solid #ccc;
+	padding-left: 2px;
+}
+
+.small {
+	font-size: 9px;
+}
+.right {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+.number {
+	text-align: right;
+	white-space: nowrap;
+	width: 30px;
+	padding-right: 5px;
+}
+
+/* ROUND BY JIN */
+.ba1h, .ba2h, .ba3h, .ba4h, .ba2bh, .ba3bh, .ba4bh{font-size:1px; overflow:hidden; display:block;}
+.ba1h {height:1px; background:#000099; margin:0 5px;}
+.ba2h, .ba2bh {height:1px; background:#000099; border-right:2px solid #000099; border-left:2px solid #000099; margin:0 3px;}
+.ba3h, .ba3bh {height:1px; background:#000099; border-right:1px solid #000099; border-left:1px solid #000099; margin:0 2px;}
+.ba4h, .ba4bh {height:2px; background:#000099; border-right:1px solid #000099; border-left:1px solid #000099; margin:0 1px;}
+.ba2bh, .ba3bh, .ba4bh {background: #fff;}
+.headha {background: #000099; border-right:1px solid #000099; border-left:1px solid #000099;}
+.headha h3 {margin: 0px 10px 0px 10px; padding-bottom: 3px; font-weight: normal; font-size: 12px; color: white}
+.contentha {background: #fff; border-right:1px solid #000099; border-left:1px solid #000099;}
+.content_inha {padding-top: 2px; padding-right: 5px; padding-left: 5px;}
+/* END - ROUND BY JIN */
+
+
+.inputboxsearch_detail {
+	width: 145px;
+	line-height: 25px;
+	height: 25px;
+	margin: 0 0 0 0;
+	padding: 0;
+	border: 1px solid #ddd;
+	background:#fff url(images/magnifier.html) no-repeat left center;
+	padding-left:20px;
+	font-size:15px;
+}
+
+
+.inputboxsearch_home {
+	width: 200px;
+	height: 20px;
+	margin: 0 0 0 0;
+	padding: 0;
+	border: 1px solid #ddd;
+	font-size:12px;
+}
+.search_ok {
+	height: 20px;
+	line-height: 100%;
+	margin: 0 0 0 0;
+	font-size:10px;
+	vertical-align: middle;
+	padding: 0 5px;
+	border: none;
+	background-color:#017342;
+	color: #fff;
+	font-weight: bold;
+}
+
+table.calendar {border: 0; width: 100%;}
+table.calendar th {text-align: center; border: 0;background-color: #fee5a9; padding: 8px;}
+table.calendar th {height: 14px; font-size: 12px; font-weight: normal; }
+table.calendar td {height: 14px; font-size: 12px; background-color: #e3edf8; vertical-align: top; text-align: center; padding: 8px;}
+table.calendar .calendar-month {font-weight: bold; margin-top: 10px; font-size: 22px; text-align: center}
+table.calendar .calendar-month a{}
+table.calendar .calendar-prev, table.calendar .calendar-next {font-weight: normal;}
+table.calendar th {color: black; text-align: center;}
+table.calendar td.linked-day {font-size: 12px; background-color: #FFFFAA;}

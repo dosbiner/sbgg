@@ -1,0 +1,757 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from sbgg.sch.id/en/content/48/jquery.colorbox-min.js by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 23:58:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="keywords" content="School Achievements" />
+<meta http-equiv="Description" content="Jl. Prof. DR. Soepomo No.11, RT.13/RW.2, Tebet Barat, Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810" />
+<meta http-equiv="Author" content="Leoniko Inc." />
+<meta http-equiv="Version" content="1.1.3" />
+<title>School Achievements - Sekolah Bina Gita Gemilang</title>
+<script type="text/javascript">
+	var jin_path = '../../../index.html';
+	var jin_lang = 'en';
+</script>
+<script language="javascript" type="text/javascript" src="../../../theme/default/js/stmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../theme/default/jin.css" />
+<link rel="stylesheet" type="text/css" href="../../../theme/default/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../theme/default/round-button.css" />
+
+<script type="text/javascript" src="../../../inc/jwd01.js"></script>
+
+<style type="text/css">
+
+#pscroller1{
+width: 200px;
+height: 100px;
+border: 1px solid black;
+padding: 5px;
+background-color: lightyellow;
+}
+
+#pscroller2{
+width: 100%;
+height: 13px;
+border: 0;
+padding: 2px;
+color: #3566CD;
+}
+
+#pscroller2 a{
+text-decoration: none;
+}
+
+.someclass{ //class to apply to your scroller(s) if desired
+	color: #3566CD;
+}
+
+</style>
+
+<script type="text/javascript">
+
+var pausecontent2=new Array()
+
+
+</script>
+
+<script type="text/javascript">
+
+/***********************************************
+* Pausing up-down scroller- © Dynamic Drive (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+***********************************************/
+
+function pausescroller(content, divId, divClass, delay){
+this.content=content //message array content
+this.tickerid=divId //ID of ticker div to display information
+this.delay=delay //Delay between msg change, in miliseconds.
+this.mouseoverBol=0 //Boolean to indicate whether mouse is currently over scroller (and pause it if it is)
+this.hiddendivpointer=1 //index of message array for hidden div
+document.write('<div id="'+divId+'" class="'+divClass+'" style="position: relative; overflow: hidden"><div class="innerDiv" style="position: absolute; width: 100%" id="'+divId+'1">'+content[0]+'</div><div class="innerDiv" style="position: absolute; width: 100%; visibility: hidden" id="'+divId+'2">'+content[1]+'</div></div>')
+var scrollerinstance=this
+if (window.addEventListener) //run onload in DOM2 browsers
+window.addEventListener("load", function(){scrollerinstance.initialize()}, false)
+else if (window.attachEvent) //run onload in IE5.5+
+window.attachEvent("onload", function(){scrollerinstance.initialize()})
+else if (document.getElementById) //if legacy DOM browsers, just start scroller after 0.5 sec
+setTimeout(function(){scrollerinstance.initialize()}, 500)
+}
+
+// -------------------------------------------------------------------
+// initialize()- Initialize scroller method.
+// -Get div objects, set initial positions, start up down animation
+// -------------------------------------------------------------------
+
+pausescroller.prototype.initialize=function(){
+this.tickerdiv=document.getElementById(this.tickerid)
+this.visiblediv=document.getElementById(this.tickerid+"1")
+this.hiddendiv=document.getElementById(this.tickerid+"2")
+this.visibledivtop=parseInt(pausescroller.getCSSpadding(this.tickerdiv))
+//set width of inner DIVs to outer DIV's width minus padding (padding assumed to be top padding x 2)
+this.visiblediv.style.width=this.hiddendiv.style.width=this.tickerdiv.offsetWidth-(this.visibledivtop*2)+"px"
+this.getinline(this.visiblediv, this.hiddendiv)
+this.hiddendiv.style.visibility="visible"
+var scrollerinstance=this
+document.getElementById(this.tickerid).onmouseover=function(){scrollerinstance.mouseoverBol=1}
+document.getElementById(this.tickerid).onmouseout=function(){scrollerinstance.mouseoverBol=0}
+if (window.attachEvent) //Clean up loose references in IE
+window.attachEvent("onunload", function(){scrollerinstance.tickerdiv.onmouseover=scrollerinstance.tickerdiv.onmouseout=null})
+setTimeout(function(){scrollerinstance.animateup()}, this.delay)
+}
+
+
+// -------------------------------------------------------------------
+// animateup()- Move the two inner divs of the scroller up and in sync
+// -------------------------------------------------------------------
+
+pausescroller.prototype.animateup=function(){
+var scrollerinstance=this
+if (parseInt(this.hiddendiv.style.top)>(this.visibledivtop+5)){
+this.visiblediv.style.top=parseInt(this.visiblediv.style.top)-5+"px"
+this.hiddendiv.style.top=parseInt(this.hiddendiv.style.top)-5+"px"
+setTimeout(function(){scrollerinstance.animateup()}, 50)
+}
+else{
+this.getinline(this.hiddendiv, this.visiblediv)
+this.swapdivs()
+setTimeout(function(){scrollerinstance.setmessage()}, this.delay)
+}
+}
+
+// -------------------------------------------------------------------
+// swapdivs()- Swap between which is the visible and which is the hidden div
+// -------------------------------------------------------------------
+
+pausescroller.prototype.swapdivs=function(){
+var tempcontainer=this.visiblediv
+this.visiblediv=this.hiddendiv
+this.hiddendiv=tempcontainer
+}
+
+pausescroller.prototype.getinline=function(div1, div2){
+div1.style.top=this.visibledivtop+"px"
+div2.style.top=Math.max(div1.parentNode.offsetHeight, div1.offsetHeight)+"px"
+}
+
+// -------------------------------------------------------------------
+// setmessage()- Populate the hidden div with the next message before it's visible
+// -------------------------------------------------------------------
+
+pausescroller.prototype.setmessage=function(){
+var scrollerinstance=this
+if (this.mouseoverBol==1) //if mouse is currently over scoller, do nothing (pause it)
+setTimeout(function(){scrollerinstance.setmessage()}, 100)
+else{
+var i=this.hiddendivpointer
+var ceiling=this.content.length
+this.hiddendivpointer=(i+1>ceiling-1)? 0 : i+1
+this.hiddendiv.innerHTML=this.content[this.hiddendivpointer]
+this.animateup()
+}
+}
+
+pausescroller.getCSSpadding=function(tickerobj){ //get CSS padding value, if any
+if (tickerobj.currentStyle)
+return tickerobj.currentStyle["paddingTop"]
+else if (window.getComputedStyle) //if DOM2
+return window.getComputedStyle(tickerobj, "").getPropertyValue("padding-top")
+else
+return 0
+}
+
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="../../../inc/highslide/style.css" />
+<script type="text/javascript" src="../../../inc/highslide/highslide-with-html.js"></script>
+<script type="text/javascript">    
+   hs.graphicsDir = '../../../inc/highslide/graphics/index.html';
+   hs.outlineType = 'rounded-white';
+   hs.outlineWhileAnimating = true;hs.showCredits = false;
+	window.onload = function() {
+      hs.preloadImages();
+   }
+	
+</script>
+
+<link rel="shortcut icon" href="../../../favicon.ico" />
+
+<link media="screen" rel="stylesheet" href="colorbox.html" />
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="jquery.colorbox-min.html" type="text/javascript"></script>
+<script type="text/javascript">
+$(function()
+{
+    $(window).bind('load', 
+        function(e) 
+        {
+            $.colorbox({opacity:0.3, href:"offer.html"}); 
+        });
+});
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div align="center">
+	<table border="0" width="950" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+			<table border="0" width="100%">
+				<tr>
+					<td width="26">
+			<img src="../../../theme/default/images/logo_sbgg.png"></td>
+					<td>
+					<p align="right">
+			<img src="../../../theme/default/images/go_green.png"></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="0" width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td style="border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px">
+			<table border="0" width="100%" style="border-width:0px; ">
+				<tr>
+					<td style="border-style:none; border-width:medium; " width="647">
+					
+
+				<script type="text/javascript">
+				// pmi-> 83886139
+stm_bm(["menu0b4a","850","","",0,"","",0,2,250,0,1000,1,0,0,"","100%",67109119,0,1,2,"default","hand",""],this);
+//stm_bp("p0",[1,4,0,0,2,3,0,7,50,"",-2,"",-2,50,0,0,"#999999","#E6EFF9","",3,1,1,"#000000"]);
+stm_bp("p0",[0,4,0,0,0,10,0,7,100,"",-2,"",-2,100,0,0,"","","",3,0,0,"transparent"]);
+stm_ai("p0i0",[0,"Home","","",-1,-1,0,"../../index.html","_self","","","","",,,0,"","",0,0,0,1,1,"",0,"#336699",0,"","",3,3,1,1,"transparent","#ffffff","#000000","#ffffff","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+		stm_aix("p0i2","p0i0",[0,"About Us","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p79","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p79i0","p0i0",[0,"Origin","","",-1,-1,0,"../45/origin.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"Vision, Mission & Motto","","",-1,-1,0,"../44/vision--mission---motto.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"School Values","","",-1,-1,0,"../46/school-values.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"School Achievements","","",-1,-1,0,"school-achievements.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p79i0","p0i0",[0,"School Facilities","","",-1,-1,0,"../49/school-facilities.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+					stm_aix("p0i3","p0i0",[0,"Curriculum","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p89","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p89i0","p0i0",[0,"English Language","","",-1,-1,0,"../50/english-language.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Mathematics","","",-1,-1,0,"../51/mathematics.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Second Language","","",-1,-1,0,"","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"../../../theme/default/menujin/arrow_r.gif","../../../theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p92","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p92i0","p0i0",[0,"Bahasa Indonesia","","",-1,-1,0,"../52/bahasa-indonesia.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p92i0","p0i0",[0,"Chinese Language","","",-1,-1,0,"../53/chinese-language.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				stm_aix("p89i0","p0i0",[0,"Science","","",-1,-1,0,"../54/science.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Aesthetics","","",-1,-1,0,"","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"../../../theme/default/menujin/arrow_r.gif","../../../theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p96","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p96i0","p0i0",[0,"Arts & Crafts","","",-1,-1,0,"../55/arts---crafts.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p96i0","p0i0",[0,"Music","","",-1,-1,0,"../56/music.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				stm_aix("p89i0","p0i0",[0,"Moral Education","","",-1,-1,0,"","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"../../../theme/default/menujin/arrow_r.gif","../../../theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p99","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p99i0","p0i0",[0,"Christian","","",-1,-1,0,"../57/christian.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p99i0","p0i0",[0,"Muslim","","",-1,-1,0,"../58/muslim.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				stm_aix("p89i0","p0i0",[0,"Character Education","","",-1,-1,0,"../85/character-education.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p89i0","p0i0",[0,"Other Studies","","",-1,-1,0,"","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"../../../theme/default/menujin/arrow_r.gif","../../../theme/default/menujin/arrow_r.gif",7,7,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_bpx("p102","p0",[1,2,0,0,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p102i0","p0i0",[0,"Indonesian Studies","","",-1,-1,0,"../59/indonesian-studies.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p102i0","p0i0",[0,"Physical Education","","",-1,-1,0,"../61/physical-education.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p102i0","p0i0",[0,"Information Technology (IT)","","",-1,-1,0,"../62/information-technology--it-.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+				
+				stm_ep();
+					stm_aix("p0i4","p0i0",[0,"Programme","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p106","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p106i0","p0i0",[0,"Learning Support Programme","","",-1,-1,0,"../63/learning-support-programme.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p106i0","p0i0",[0,"Elective Programme","","",-1,-1,0,"../64/elective-programme.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p106i0","p0i0",[0,"Co-Curricular Activities (CCA)","","",-1,-1,0,"../65/co-curricular-activities--cca-.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+					stm_aix("p0i5","p0i0",[0,"PSC","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p109","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p109i0","p0i0",[0,"Rationale","","",-1,-1,0,"../66/rationale.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p109i0","p0i0",[0,"News","","",-1,-1,0,"../67/news.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p109i0","p0i0",[0,"Members","","",-1,-1,0,"../68/members.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+					stm_aix("p0i6","p0i0",[0,"Photo Gallery","","",-1,-1,0,"../../gallery.html","_self","","","","",,,0,"","",,,0,1],0,0);
+							stm_aix("p0i7","p0i0",[0,"Alumni News & Achievements","","",-1,-1,0,"../88/alumni-news---achievements.html","_self","","","","",,,0,"","",,,0,1],0,0);
+							stm_aix("p0i8","p0i0",[0,"Contact Us","","",-1,-1,0,"","_self","","","","",,,0,"","",0,0,0,1],0,0);
+						stm_bpx("p86","p0",[1,4,1,1,1,8,0,0,95,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,,0,0,"",""]);
+						stm_aix("p86i0","p0i0",[0,"Our Address","","",-1,-1,0,"../47/our-address.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p86i0","p0i0",[0,"Enrollment","","",-1,-1,0,"../84/enrollment.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							stm_aix("p86i0","p0i0",[0,"Employment","","",-1,-1,0,"../86/employment.html","_self","","","../../../theme/default/menujin/blank.gif","../../../theme/default/menujin/kotak_biru.jpg",6,15,0,"","",,,0,0,1,"#e3edf8",0,"#e3edf8",0,"","",3,3,1,0,"transparent","transparent","#000000","#000000","bold 10px Verdana","bold 10px Verdana",0,0],0,0);
+							
+				stm_ep();
+			
+stm_ep();
+stm_sc(1,["transparent","transparent","","",3,3,0,0,"#FFFFF7","#000000","../../../theme/default/menujin/up_disabled.gif","../../../theme/default/menujin/up_enabled.gif",7,9,0,"../../../theme/default/menujin/down_disabled.gif","../../../theme/default/menujin/down_enabled.gif",7,9,0,0,200]);
+stm_em();
+</script>
+</td>
+					<td style="border-style:none; border-width:medium; " bgcolor="#800000">
+					<p align="center">
+					<b><font size="1" color="#FFFFFF">Jakarta, 22 November 2023 - 06:54 
+					WIB </font></b></td>
+				</tr>
+			</table>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<img src="../../../theme/default/images/gr.png" width="950" height="10" alt=""></td>
+		</tr>
+		<tr>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p align="center"><img src="../../../uploaded/header_sub_02.png" alt="" width="950" height="178" />
+</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td bgcolor="#800000">
+			<table border="0" width="100%" cellpadding="8">
+				<tr>
+					<td><font color="#FFFFFF" size="4"><b>
+					<marquee scrollamount="5" scrolldelay="30">CREATIVITY - HUMILITY - INTEGRITY - RESOURCEFULNESS - PERSEVERANCE - SENSITIVITY
+					</marquee></b></font></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="0" width="100%" cellpadding="10">
+				<tr>
+					<td valign="top">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="297">
+							<table border="0" width="480" cellspacing="0" cellpadding="0" height="44">
+								<tr>
+									<td background="../../../theme/default/images/kotak_0003.png">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<b>
+													<font size="4">School Achievements</font></b></td>
+								</tr>
+							</table>
+									</td>
+								</tr>
+							</table>
+							</td>
+							<td background="../../../theme/default/images/kotak_003.png">&nbsp;</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td background="../../../theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8">
+											<tr>
+												<td valign="top">
+									<table border="0" width="100%" cellpadding="10">
+										<tr>
+											<td><div align="center">
+<strong style="font-size: xx-large">..:: 2019 ::..</strong><br />
+</div>
+<ul style="text-align: start">
+	<li><strong>1st and 2nd Place Spelling Bee Competition Catagory A and C - EF Tebet<br />
+	</strong></li>
+	<li><strong>1 Gold (Mathematics) ICAS NSW Australia<br />
+	</strong></li>
+	<li><strong>1 Silver (Math) Southeast Mathematical olympiad</strong></li>
+	<li><strong>1 Bronze (Math) Southeast Mathematical olympiad<br />
+	</strong></li>
+	<li><strong>Gold Medal Kalista Noreen Primary 4&nbsp;Math Competition at Jakarta Nanyang School, BSD City On 15 February 2019</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Leviana Dearma Belinda Pasaribu Primary 4&nbsp;Math Competition at Jakarta Nanyang School, BSD City On 15 February 2019</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Melisya Yamakita Primary 6&nbsp;Math Competition at Jakarta Nanyang School, BSD City On 15 February 2019</strong></li><strong>
+	</strong>
+	<li><strong>Gold Medal&nbsp;Kalista Noreen primary 4&nbsp;INTERNATIONAL SINGAPORE MATHS COMPETITION (ISMC) 30 March 2019&nbsp;</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Emery Fomaro Annas Primary 2&nbsp;INTERNATIONAL SINGAPORE MATHS COMPETITION (ISMC) 30 March 2019&nbsp;</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Jason Alexander Wahyudi Primary 2&nbsp;INTERNATIONAL SINGAPORE MATHS COMPETITION (ISMC) 30 March 2019&nbsp;</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Arden Faris Naserudin Primary 3&nbsp;INTERNATIONAL SINGAPORE MATHS COMPETITION (ISMC) 30 March 2019&nbsp;</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Mikaela Alesha Nungkat Primary 3&nbsp;INTERNATIONAL SINGAPORE MATHS COMPETITION (ISMC) 30 March 2019&nbsp;</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Leviana Dearma Belinda Pasaribu Primary 4&nbsp;INTERNATIONAL SINGAPORE MATHS COMPETITION (ISMC) 30 March 2019&nbsp;</strong></li><strong>
+	</strong>
+	<li><strong>Bronze Medal&nbsp;Leviana Dearma Belinda Pasaribu Primary 4&nbsp;Math Competition at Fukuoka, Japan (15 - 19 July 2019)</strong></li>
+</ul>
+<br />
+<br />
+<br />
+<div align="center">
+<font size="6"><strong>..:: 2018 ::..</strong></font>
+</div>
+<div align="left">
+&nbsp;&nbsp; <br />
+</div>
+<div align="left">
+<br />
+</div>
+<div align="left">
+<ul>
+	<li>
+	&nbsp; &nbsp;&nbsp; Finalist Story Telling Festival (Grade 3-4) Kidpublish</li>
+</ul>
+<ul>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; Ranked in 8<sup>th</sup> Place Math Competition at SMP Labscool Kebayoran
+	</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 2 Gold Medal <strong>World Mathematics Invitational</strong> (WMI) 2018 Indonesia Preliminary Round
+	</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 1 Silver Medal <strong>World Mathematics Invitational</strong> (WMI) 2018 Indonesia Preliminary Round</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 4 Silver Medal <strong>INTERNATIONAL SINGAPORE MATHS COMPETITION</strong> (ISMC) 2018
+	</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; Juara Harapan I Bahasa Inggris - Story Telling <strong>Canisius Talents Spotting</strong> (CTS X) </li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; Juara Harapan II Bahasa Indonesia - writing&nbsp;<strong>Canisius Talents Spotting</strong> (CTS X)
+	</li>
+	<li>
+	&nbsp; &nbsp;&nbsp; 1st, 2nd and 3rd&nbsp; Place Spelling Bee Competition&nbsp; EF Tebet
+	</li>
+	<li>
+	&nbsp; &nbsp;&nbsp; 2nd Place Story Telling Festival (Grade 1-2)&nbsp; Kidpublish
+	</li>
+	<li>
+	&nbsp; &nbsp;&nbsp; 1 Gold (English) ICAS NSW Australia
+	</li>
+	<li>
+	&nbsp; &nbsp;&nbsp; 1st and 2nd Place Storytelling Competition&nbsp; GALAKSI, SMP Asisi, Jakarta
+	</li>
+</ul>
+</div>
+<div align="center">
+<font size="6"><strong>..:: 2017 ::..</strong></font>
+</div>
+<div>
+<div align="left">
+&nbsp;&nbsp; <br />
+</div>
+<div align="left">
+<br />
+</div>
+<ul>
+	<li>
+	&nbsp; &nbsp;&nbsp; 1 Bronze Medal (Mathematics) ICAS NSW Australia</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 9 Distinction (Maths )ICAS&nbsp; NSW Australia</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 5 Distinction ( Englsih) ICAS NSW Australia</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 6 Distinction (Science )ICAS NSW Australia</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; Finalist Story Telling Competition &acirc;?? Kidspublish</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 1st winner and 2nd winner EF Spelling Bee Competition English First Tebet</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 2nd winner and 3rd winner Solo Singer Competition&nbsp; Arscey Cup SMP Yasporbi</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 1st winner and 2nd winner Spelling Bee Competition Arscey Cup SMP Yasporbi</li>
+	<li>
+	&nbsp;&nbsp;&nbsp;&nbsp; 2nd winner Story Telling Competition Arscey Cup SMP Yasporbi</li>
+</ul>
+<div align="left">
+<br />
+<br />
+</div>
+</div>
+<div align="center">
+&nbsp;
+<font size="6"><strong>..:: 2016 ::..</strong></font>
+</div>
+<br />
+<ul>
+	<li>3rd Place Mathematics Competition&nbsp; Lab School Jakarta</li>
+	<li>3 Finalist Mathematics Competition&nbsp; Upper Primary level at <br />
+	SMP Kanisius</li>
+	<li>1 Finalist Pidato Bahasa Indonesia&nbsp;&nbsp; SMP Kanisius</li>
+	<li>1st Winner Storytelling Competition GALAKSI, SMP Asisi</li>
+	<li>2nd&nbsp; Winner Mathematics Competition&nbsp; GALAKSI, SMP Asisi</li>
+	<li>1 Gold Medal (Science) ICAS NSW Australia</li>
+	<li>2 High Distinction and 9 Distinction ICAS Science</li>
+	<li>3 Distinction ICAS English</li>
+	<li>4 High Distinction and 5 Distinction ICAS Math</li>
+</ul>
+<div align="center">
+<font size="6"><strong>..:: 2015 ::..</strong></font>
+</div>
+<br />
+<ul>
+	<li>Finalist - (Keisha Ratu Alifia, Grade 6) 2015 International Math and 
+	Science Olympiad (IMSO) - Indonesia Representing Indonesia for (IMSO) in
+	Thailand</li>
+	<li>1st&nbsp; Winner (Junior) of Super Heroes (Short Monologue) Competition by Jakarta Post</li>
+	<li>2nd&nbsp; Winner (Junior) of Super Heroes (Short Monologue) Competition by Jakarta Post</li>
+	<li>1st Winner (Senior) of Super Heroes (Short Monologue) Competition by Jakarta Post</li>
+	<li>3 High Distinction / 6 Distinction (Science) ICAS NSW Australia</li>
+	<li>1 High Distinction / 14 Distinction (Mathematics) ICAS NSW Australia</li>
+	<li>4 Distinction (English) ICAS NSW Australia</li>
+	<li>1 Gold Medal / 2 Bronze Medals (Science) Grade 5 ICAS NSW Australia</li>
+	<li>1 Silver Medal (Mathematics) Grade 3 ICAS NSW Australia</li>
+	<li>3 Finalists Kidpublish Writing Competition BUNDA MULIA International School</li>
+	<li>1st &amp; 3rd Winners Storytelling Competition GALAKSI, Sekolah ASISI</li>
+</ul>
+<table border="0" width="100%">
+	<tbody>
+		<tr>
+			<td>
+			<p align="center">
+			&nbsp;
+			<em><img src="../../../uploaded/cur/sa_2015_01.jpg" alt="" width="270" height="152" /> <br />
+			</em>
+			</p>
+			<p>
+			&nbsp;
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;
+			<em><img src="../../../uploaded/cur/sa_2015_02.jpg" alt="" width="270" height="152" /></em>
+			</p>
+			<p>
+			&nbsp;
+			</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div align="center">
+<font size="6"><strong>..:: 2014 ::..</strong></font>
+</div>
+<ul>
+	<li>
+	2 Muse Awards for Prose by Jakarta Post</li>
+	<li>2nd &amp; 4th Place, Swimming Competition at Central International School</li>
+	<li>3rd Place Taekwondo Games by Mantra</li>
+	<li>2 High Distinction / 2 Distinction ICAS Science</li>
+	<li>3 Distinction ICAS English</li>
+	<li>5 High Distinction / 2 Distinction ICAS Math</li>
+	<li>5 Silver Medals (Math) ICAS NSW Australia</li>
+	<li>2 Silver Medals (Science) ICAS NSW Australia</li>
+</ul>
+<p align="center">
+<strong><font size="6">..:: 2013 ::..</font></strong>
+</p>
+<ul>
+	<li>6 Silver Medals (Math) International Competitions and Assessments for Schools (ICAS) - NSW Australia</li>
+	<li>2 Silver Medals (Science) International Competitions and Assessments for Schools (ICAS) - NSW Australia</li>
+	<li>10 Distinction Achievements ICAS Math, 6 Distinction Achievements ICAS Writing, 5 Distinction Achievements ICAS Science</li>
+	<li>1 Distinction Achievement - Australian Mathematics Competition (AUSMAC)</li>
+	<li>3rd Winner - Storytelling Competition - Madina Islamic School</li>
+	<li>1st Place in Sekolah Global Mandiri Poetry Competition</li>
+	<li>2nd Place in High Scope Junio Futsal Competition</li>
+	<li>Bronze Award in Singapore and ASEAN Math Olympiad (SASMO 2013)</li>
+</ul>
+<div align="center">
+<strong><font size="6">..:: 2012 ::..</font></strong>
+</div>
+<ul>
+	<li>1st Winner Badminton (Boys) Pekan Olah Raga Pelajar SDN Kecamatan Tebet</li>
+	<li>1 Distinction Achievement - Australian Mathematics Competition (AUSMAC)</li>
+	<li>6 Silver Medals (Math) International Competitions &amp; Assessments for Schools (ICAS) - NSW Australia</li>
+	<li>2 Silver Medals (Science) International Competitions &amp; Assessments for Schools (ICAS) - NSW Australia</li>
+	<li>10 Distinction Achievements ICAS Math</li>
+	<li>6 Distinction Achievements ICAS Writing</li>
+	<li>5 Distinction Achievements ICAS Science</li>
+</ul>
+<div align="center">
+<strong><font size="6">..:: 2011 ::..</font></strong><br />
+</div>
+<ul>
+	<li>5 Silver Medals (Maths) International Competitions &amp; Assessments for chools (ICAS) - NSW Australia</li>
+	<li>Silver Medal (Science) International Competitions &amp; Assessments for Schools (ICAS) - NSW Australia</li>
+	<li>4 Distinction Achievements ICAS - English</li>
+	<li>5 Distinction Achievements ICAS - Maths</li>
+	<li>4 Distinction Achievements ICAS - Science</li>
+	<li>3rd Winner Matra Tae Kwon Do Inter-school Games/Maths Prix Competition - Global Mandiri School</li>
+	<li>2 Silver Medals Mathematics Olympiad - Singapore and ASEAN Schools (SASMO)</li>
+</ul>
+<div align="center">
+<font size="6"><strong>..:: 2010 ::..</strong></font>
+</div>
+<ul>
+	<li>Silver Medal (Maths) International Competitions &amp; Assessments for Schools (ICAS) - NSW Australia</li>
+	<li>Silver Medal (Science) International Competitions &amp; Assessments for Schools (ICAS) - NSW Australia</li>
+	<li>Semi-Finalist Olimpiade Sains Kuark Magazine</li>
+	<li>1st Winner Presentasi dalam Bhs Inggris - Madania Speaking &amp; Writing Competition</li>
+	<li>2nd Winner of Writing Competitions in Bahasa Indonesia and English - Madania School Speaking &amp; Writing Competition</li>
+	<li>1st &amp; 2nd Winners Taekwondo Open Championship Pre-Junior</li>
+	<li>1st and 2nd Winners Storytelling Competition - EDUFEST</li>
+	<li>Winner of English Competition, Giggle Factory</li>
+</ul>
+<br /><br /> 		<hr noshade color=#EEEEEE size=1>
+					<table border=0 width=100% >
+						<tr>
+							<td width=16>
+							<img border=0 src=../../../theme/default/images/printer.png width=16 height=16></td>
+							<td width=65>
+							<a onclick="window.open('../../print/content/48.html','','width=500,height=600,scrollbars=yes');return false;" href="#">Print View</a></td>
+							<td width=16>
+							<img border=0 src=../../../theme/default/images/email.png width=16 height=16></td>
+							<td width=80> <a onclick="window.open('../../tell-friend/content/48.html','','width=700,height=500,scrollbars=yes');return false;" href="#">Tell 
+							a Friend</a></td>
+							<td width=16> 
+							<img border=0 src=../../../theme/default/images/fb.png width=16 height=16></td>
+							<td> 
+							<a onclick="window.open('http://www.facebook.com/share.php?u=http://sbgg.sch.id/en/content/48','','width=700,height=400,scrollbars=yes');return false;" href="#">Share on Facebook</a></td>
+						</tr>
+					</table>
+					<hr noshade color=#EEEEEE size=1>
+			 </td>
+										</tr>
+									</table>
+												</td>
+											</tr>
+										</table>
+										</td>
+				</tr>
+				<tr>
+					<td>
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="../../../theme/default/images/kotak_008.png">&nbsp;</td>
+							<td width="297">
+							<p align="right">
+							<img border="0" src="../../../theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+			</table>
+							</td>
+					<td width="298" valign="top">
+					<table border="0" width="13%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td background="../../../theme/default/images/kotak_03.png" height="44">
+							<table border="0" width="100%" cellpadding="2">
+								<tr>
+									<td width="4">&nbsp;</td>
+									<td>
+											<b><font size="4">Photo Gallery</font></b></td>
+								</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<td background="../../../theme/default/images/kotak_07.png">
+										<table border="0" width="100%" cellpadding="8" height="250">
+											<tr>
+												<td valign="top">
+																<marquee  scrolldelay="150" onmouseover="this.stop();" onmouseout="this.start();" direction="up" height="350" width="274"><div align=center><table border=0 cellspacing=0 cellpadding=0 width=100%> <tr>    <td align="center" valign=top height=150 background="../../../theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb967" href="../../../img/967.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="../../../img/t/967.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="../../../theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb990" href="../../../img/990.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="../../../img/t/990.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="../../../theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb933" href="../../../img/933.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="../../../img/t/933.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="../../../theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb937" href="../../../img/937.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="../../../img/t/937.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="../../../theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb975" href="../../../img/975.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="../../../img/t/975.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr> <tr>    <td align="center" valign=top height=150 background="../../../theme/default/images/back_gallery.png" style="background-repeat:no-repeat;background-position:center;padding-left:0px;padding-top:10px;">			
+						<div>
+							<a id="thumb973" href="../../../img/973.jpg" class="highslide" onclick="return hs.expand(this)">
+							<img width=186 height=110 src="../../../img/t/973.jpg" alt="" title="Click to enlarge &raquo; " /></a>
+							<div class="highslide-caption" style="display: none;"></div>
+						</div>
+						<br />
+    </td> </tr>
+	</table>
+	</div>
+	 </marquee></td>
+											</tr>
+										</table>
+										</td>
+						</tr>
+						<tr>
+							<td>
+							<img border="0" src="../../../theme/default/images/kotak_08.png" width="297" height="28"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="0" width="100%" cellpadding="10" style="border-width: 0px">
+				<tr>
+					<td style="border-style:none; border-width:medium; ">
+					<p align="center">&copy; Copyright 2009-2023 | Sekolah Bina Gita Gemilang - All Rights Reserved. <br />
+Jl. Prof. Dr. Soepomo No. 11 Tebet - Jakarta Selatan 12810 | Phone: (+62 21) 8378 7523 Fax: (+62 21) 8370 4412<br />
+<a href="https://www.facebook.com/FromEachHisBest/" target="_blank">Facebook Sekolah bina Gita gemilang</a><br /></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		</table>
+</div>
+<script type="text/javascript">
+<!--
+var ref=""+escape(top.document.referrer);
+var colord = window.screen.colorDepth;
+var res = window.screen.width + "x" + window.screen.height;
+document.write("<img src='http://sbgg.sch.id/inc/hit/countme.php?referer=" + ref + "&amp;screen=" + res + "&amp;color="+colord+"' alt='' width=1 height=1 />");
+-->
+</script>
+<noscript><div><img src="../../../inc/hit/countme.gif" alt="" width=1 height=1/></div></noscript>
+</body>
+
+<!-- Mirrored from sbgg.sch.id/en/content/48/jquery.colorbox-min.js by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 23:58:49 GMT -->
+</html>
